@@ -8,8 +8,8 @@ class TestListener:
     ROBOT_LISTENER_API_VERSION = 2
 
     def __init__(self, filename=f'Validation and Verification Report {datetime.now().strftime("%d_%m_%Y")}.txt'):
-        outpath = os.path.join(os.getcwd(), 'Reports\\', filename)
-        #  outpath = os.path.join('/opt/robotframework/reports', filename)  <--- this save the val / ver report with other reports when using the docker image
+        # outpath = os.path.join(os.getcwd(), 'Reports\\', filename)
+        outpath = os.path.join('/opt/robotframework/reports', filename)  # <--- this save the val / ver report with other reports when using the docker image
         self.outfile = open(outpath, 'w')
 
     def start_suite(self, name, attrs):
