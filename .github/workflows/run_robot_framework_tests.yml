@@ -45,7 +45,7 @@ jobs:
         with:
           name: reports
           # set path to Robot Framework results reports. Exclude dummy file that is needed because of ppodgorsek image priviledges.
-          path: ${{ github.workspace }}/../reports
+          path: ${{ github.workspace }}/Reports
       # repository name is needed for posting test report in a next step
       - name: Get Repository Name
         run: |
