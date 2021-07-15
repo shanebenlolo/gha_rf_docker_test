@@ -50,11 +50,10 @@ jobs:
       - name: Get Repository Name
         run: |
           export REPO="$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")"
-      # echo "::ENV name=REPOSITORY_NAME::$REPO"   <--- delete this at end
       # when test are run for a commit, post results as a comment
       # note: comment is not posted for tests triggered for pull requests, only for a main branch (master)
       - name: Send test report as comment to commit
-        uses: joonvena/robotframework-reporter-action@v0.2
+        uses: joonvena/robotframework-reporter-action@v0.1
         if: ${{ github.event_name == 'push' }}
         env:
           GH_ACCESS_TOKEN: ${{ github.TOKEN }}
