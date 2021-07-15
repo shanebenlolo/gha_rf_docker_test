@@ -45,12 +45,12 @@ jobs:
         with:
           name: reports
           # set path to Robot Framework results reports. Exclude dummy file that is needed because of ppodgorsek image priviledges.
-          path: ${{ github.workspace }}/reports
+          path: ${{ github.workspace }}../reports
       # repository name is needed for posting test report in a next step
       - name: Get Repository Name
         run: |
           export REPO="$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")"
-      # echo "::ENV name=REPOSITORY_NAME::$REPO"
+      # echo "::ENV name=REPOSITORY_NAME::$REPO"   <--- delete this at end
       # when test are run for a commit, post results as a comment
       # note: comment is not posted for tests triggered for pull requests, only for a main branch (master)
       - name: Send test report as comment to commit
