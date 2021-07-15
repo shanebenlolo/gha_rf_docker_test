@@ -57,6 +57,7 @@ jobs:
         uses: joonvena/robotframework-reporter-action@v0.1
         if: ${{ github.event_name == 'push' }}
         env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           GH_ACCESS_TOKEN: ${{ github.TOKEN }}
           REPO_OWNER: ${{ github.REPOSITORY_OwNER }}
           COMMIT_SHA: ${{ github.SHA }}
