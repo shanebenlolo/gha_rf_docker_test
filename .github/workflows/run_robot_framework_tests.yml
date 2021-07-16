@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       # create folder for test reports
       - name: Create folder for reports
-        run: mkdir Reports
+        run: mkdir reports
       # run Robot Framework tests inside Docker container
       - name: Run Robot Framework Tests
         # container used here is ppodgorsek/robot-framework:latest
@@ -32,7 +32,7 @@ jobs:
         # configure -e ROBOT_OPTIONS according to yout tests, or remove it if no special configuration is needed
         run: |
           docker run \
-            -v ${PWD}/Reports:/opt/robotframework/reports:Z \
+            -v ${PWD}/reports:/opt/robotframework/reports:Z \
             -v ${PWD}/Tests:/opt/robotframework/tests:Z \
             -v ${PWD}/Listeners:/opt/robotframework/listeners:Z \
             -e ROBOT_OPTIONS="--listener /opt/robotframework/listeners/TestListener.py" \
@@ -45,7 +45,7 @@ jobs:
         with:
           name: reports
           # set path to Robot Framework results reports. Exclude dummy file that is needed because of ppodgorsek image priviledges.
-          path: ${{ github.workspace }}/Reports
+          path: ${{ github.workspace }}/reports
       # repository name is needed for posting test report in a next step
       - name: Get Repository Name
         run: |
@@ -60,4 +60,4 @@ jobs:
           REPO_OWNER: ${{ github.REPOSITORY_OwNER }}
           COMMIT_SHA: ${{ github.SHA }}
           REPOSITORY: ${{ github.repository }}
-          REPORT_PATH: ${{ github.workspace }}/Reports
+          REPORT_PATH: ${{ github.workspace }}/reports
