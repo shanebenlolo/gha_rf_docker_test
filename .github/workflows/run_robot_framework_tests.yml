@@ -52,8 +52,6 @@ jobs:
           export REPO="$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")"
       # when test are run for a commit, post results as a comment
       # note: comment is not posted for tests triggered for pull requests, only for a main branch (master)
-      # the action below is unavailable until the author of it responds to the issue I filed @ https://github.com/joonvena/Robot-Reporter/issues/4
-<<<<<<< HEAD
       - name: Send test report as comment to commit
         uses: joonvena/robotframework-reporter-action@v0.1
         if: ${{ github.event_name == 'push' }}
@@ -63,14 +61,3 @@ jobs:
           COMMIT_SHA: ${{ github.SHA }}
           REPOSITORY: ${{ github.repository }}
           REPORT_PATH: ${{ github.workspace }}/Reports
-=======
-      # - name: Send test report as comment to commit
-      #   uses: joonvena/robotframework-reporter-action@v0.1
-      #   if: ${{ github.event_name == 'push' }}
-      #   env:
-      #     GH_ACCESS_TOKEN: ${{ github.TOKEN }}
-      #     REPO_OWNER: ${{ github.REPOSITORY_OwNER }}
-      #     COMMIT_SHA: ${{ github.SHA }}
-      #     REPOSITORY: ${{ github.repository }}
-      #     REPORT_PATH: ${{ github.workspace }}/Reports
->>>>>>> 88c61e62613ba8d5751a6241b1c1d2a1af8356ff
